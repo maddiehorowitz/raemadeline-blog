@@ -1,0 +1,1 @@
+/Users/raemadeline/workspace/raemadeline/node_modules/ember-data/addon/store.js

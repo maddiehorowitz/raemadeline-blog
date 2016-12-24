@@ -1,0 +1,1 @@
+/Users/raemadeline/workspace/raemadeline/tmp/broccoli_merge_trees-input_base_path-WkfnHfsz.tmp/6/initializers/app-version.js
