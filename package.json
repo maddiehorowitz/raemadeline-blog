@@ -1,9 +1,9 @@
 {
   "name": "raemadeline",
   "version": "0.0.0",
-  "description": "Small description for raemadeline goes here",
+  "description": "personal website for madeline rae horowitz",
   "license": "MIT",
-  "author": "",
+  "author": "Madeline Rae Horowitz <raemadeline@gmail.com> (http://raemadeline.com)",
   "directories": {
     "doc": "doc",
     "test": "tests"
