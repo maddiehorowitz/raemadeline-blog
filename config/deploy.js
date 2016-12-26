@@ -2,8 +2,11 @@
 
 module.exports = function(deployTarget) {
   var ENV = {
-    build: {}
+    build: {},
     // include other plugin configuration that applies to all deploy targets here
+    'revision-data': {
+      type: 'git-commit'
+    }
   };
 
   ENV.git = {
@@ -23,8 +26,8 @@ module.exports = function(deployTarget) {
 
   if (deployTarget === 'production') {
     ENV.build.environment = 'production';
-    ENV.baseURL = '/raemadeline';
     ENV.locationType = 'hash';
+    ENV.rootURL = '/raemadeline';
     // configure other plugins for production deploy target here
   }
 

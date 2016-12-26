@@ -289,7 +289,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("raemadeline/app")["default"].create({"name":"raemadeline","version":"0.0.0+f72caeef"});
+  require("raemadeline/app")["default"].create({"name":"raemadeline","version":"0.0.0+f9516d15"});
 }
 
 /* jshint ignore:end */
