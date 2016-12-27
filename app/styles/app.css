@@ -53,16 +53,14 @@ table {
 /* Styles */
 
 body {
-  background: #552d02;
-  background-image: url('/assets/images/wallpaper.jpg');
-  background-size: cover;
-  background-position: center;
+  background-color: #680f29;
 }
 
 .container {
   color: white;
   width: 80%;
   padding: 10%;
+  position: relative;
 }
 
 a {
@@ -101,4 +99,28 @@ ul {
 
 footer li {
   list-style: none;
+}
+
+/* fade in image */
+
+.fade-in-image {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-image: none;
+  position: fixed;
+  overflow: scroll;
+}
+
+.fade-in-image .placeholder {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition-property: opacity;
+  opacity: 0;
+}
+
+.fade-in-image.image-hidden .placeholder {
+  opacity: 1;
 }

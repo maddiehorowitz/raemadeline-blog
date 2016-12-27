@@ -9,6 +9,15 @@ define('raemadeline/tests/app.jshint.lint-test', ['exports'], function (exports)
     assert.ok(false, 'app.js should pass jshint.\napp.js: line 1, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\napp.js: line 2, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\napp.js: line 3, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\napp.js: line 4, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\napp.js: line 6, col 1, \'let\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\napp.js: line 13, col 3, \'object short notation\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\napp.js: line 18, col 1, \'export\' is only available in ES6 (use \'esversion: 6\').\n\n7 errors');
   });
 });
+define('raemadeline/tests/components/fade-in-image.jshint.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint | components/fade-in-image.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(false, 'components/fade-in-image.js should pass jshint.\ncomponents/fade-in-image.js: line 1, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\ncomponents/fade-in-image.js: line 3, col 1, \'export\' is only available in ES6 (use \'esversion: 6\').\ncomponents/fade-in-image.js: line 15, col 12, \'template literal syntax\' is only available in ES6 (use \'esversion: 6\').\ncomponents/fade-in-image.js: line 18, col 3, \'concise methods\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\ncomponents/fade-in-image.js: line 19, col 17, \'spread/rest operator\' is only available in ES6 (use \'esversion: 6\').\ncomponents/fade-in-image.js: line 27, col 3, \'concise methods\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\ncomponents/fade-in-image.js: line 30, col 19, \'arrow function syntax (=>)\' is only available in ES6 (use \'esversion: 6\').\ncomponents/fade-in-image.js: line 32, col 40, \'template literal syntax\' is only available in ES6 (use \'esversion: 6\').\n\n8 errors');
+  });
+});
 define('raemadeline/tests/helpers/destroy-app', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = destroyApp;
 
@@ -107,6 +116,44 @@ define('raemadeline/tests/helpers/start-app.jshint.lint-test', ['exports'], func
     assert.ok(true, 'helpers/start-app.js should pass jshint.');
   });
 });
+define('raemadeline/tests/integration/components/fade-in-image-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForComponent)('fade-in-image', 'Integration | Component | fade in image', {
+    integration: true
+  });
+
+  (0, _emberQunit.test)('it renders', function (assert) {
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+
+    this.render(Ember.HTMLBars.template({
+      'id': 'x4OFAy5A',
+      'block': '{"statements":[["append",["unknown",["fade-in-image"]],false]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:
+    this.render(Ember.HTMLBars.template({
+      'id': '3BJUBtg/',
+      'block': '{"statements":[["text","\\n"],["block",["fade-in-image"],null,null,0],["text","  "]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      template block text\\n"]],"locals":[]}],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+});
+define('raemadeline/tests/integration/components/fade-in-image-test.jshint.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint | integration/components/fade-in-image-test.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/fade-in-image-test.js should pass jshint.');
+  });
+});
 define('raemadeline/tests/resolver.jshint.lint-test', ['exports'], function (exports) {
   'use strict';
 
@@ -123,6 +170,15 @@ define('raemadeline/tests/router.jshint.lint-test', ['exports'], function (expor
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(false, 'router.js should pass jshint.\nrouter.js: line 1, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\nrouter.js: line 2, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\nrouter.js: line 4, col 1, \'const\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nrouter.js: line 14, col 1, \'export\' is only available in ES6 (use \'esversion: 6\').\n\n4 errors');
+  });
+});
+define('raemadeline/tests/routes/application.jshint.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint | routes/application.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(false, 'routes/application.js should pass jshint.\nroutes/application.js: line 1, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\nroutes/application.js: line 3, col 1, \'export\' is only available in ES6 (use \'esversion: 6\').\n\n2 errors');
   });
 });
 define('raemadeline/tests/routes/books.jshint.lint-test', ['exports'], function (exports) {
@@ -163,6 +219,27 @@ define('raemadeline/tests/test-helper.jshint.lint-test', ['exports'], function (
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'test-helper.js should pass jshint.');
+  });
+});
+define('raemadeline/tests/unit/routes/application-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleFor)('route:application', 'Unit | Route | application', {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+  });
+
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var route = this.subject();
+    assert.ok(route);
+  });
+});
+define('raemadeline/tests/unit/routes/application-test.jshint.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint | unit/routes/application-test.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/routes/application-test.js should pass jshint.');
   });
 });
 define('raemadeline/tests/unit/routes/books-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {

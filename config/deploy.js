@@ -26,8 +26,8 @@ module.exports = function(deployTarget) {
 
   if (deployTarget === 'production') {
     ENV.build.environment = 'production';
+    ENV.rootURL = '/raemadeline/';
     ENV.locationType = 'hash';
-    ENV.rootURL = '/raemadeline';
     // configure other plugins for production deploy target here
   }
 

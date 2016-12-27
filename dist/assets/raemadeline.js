@@ -22,6 +22,48 @@ define('raemadeline/app', ['exports', 'ember', 'raemadeline/resolver', 'ember-lo
 
   exports['default'] = App;
 });
+define('raemadeline/components/fade-in-image', ['exports', 'ember'], function (exports, _ember) {
+  exports['default'] = _ember['default'].Component.extend({
+    classNames: ['fade-in-image'],
+    classNameBindings: ['imageLoaded::image-hidden'],
+    placeholderColor: '',
+    sourceImage: '',
+    // animation speed in milliseconds
+    animationSpeed: 1000,
+
+    imageLoaded: false,
+
+    // parse animationSpeed into seconds, then into a string
+    animationSeconds: _ember['default'].computed('animationSpeed', function () {
+      return this.get('animationSpeed') / 1000 + 's';
+    }),
+
+    didInsertElement: function didInsertElement() {
+      this._super.apply(this, arguments);
+
+      this.$('.placeholder').css('background-color', this.get('placeholderColor'));
+      this.$('.placeholder').css('transition-duration', this.get('animationSeconds'));
+
+      this._setupImage();
+    },
+
+    _setupImage: function _setupImage() {
+      var _this = this;
+
+      var img = new Image();
+
+      img.onload = function () {
+        _this.set('imageLoaded', true);
+        _this.$().css('background-image', 'url(' + _this.get('sourceImage') + ')');
+        _ember['default'].run.later(_this, function () {
+          this.$('.placeholder').remove();
+        }, _this.get('animationSpeed'));
+      };
+
+      img.src = this.get('sourceImage');
+    }
+  });
+});
 define('raemadeline/helpers/app-version', ['exports', 'ember', 'raemadeline/config/environment'], function (exports, _ember, _raemadelineConfigEnvironment) {
   exports.appVersion = appVersion;
   var version = _raemadelineConfigEnvironment['default'].APP.version;
@@ -227,6 +269,9 @@ define('raemadeline/router', ['exports', 'ember', 'raemadeline/config/environmen
 
   exports['default'] = Router;
 });
+define('raemadeline/routes/application', ['exports', 'ember'], function (exports, _ember) {
+  exports['default'] = _ember['default'].Route.extend({});
+});
 define('raemadeline/routes/books', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Route.extend({});
 });
@@ -244,8 +289,14 @@ define('raemadeline/services/ajax', ['exports', 'ember-ajax/services/ajax'], fun
     }
   });
 });
+define("raemadeline/templates/application", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template({ "id": "yvfT3q51", "block": "{\"statements\":[[\"block\",[\"fade-in-image\"],null,[[\"placeholderColor\",\"sourceImage\",\"animationSpeed\"],[\"#680f29\",\"/assets/images/wallpaper.jpg\",5000]],0]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[{\"statements\":[[\"text\",\"  \"],[\"append\",[\"unknown\",[\"outlet\"]],false],[\"text\",\"\\n\"]],\"locals\":[]}],\"hasPartials\":false}", "meta": { "moduleName": "raemadeline/templates/application.hbs" } });
+});
 define("raemadeline/templates/books", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template({ "id": "5Nl0Rjlx", "block": "{\"statements\":[[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"container\"],[\"flush-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"header\",[]],[\"flush-element\"],[\"text\",\"In reverse chronological order\"],[\"close-element\"],[\"text\",\"\\n\\n  \"],[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"text\",\"2016\"],[\"close-element\"],[\"text\",\"\\n\\n  \"],[\"open-element\",\"ul\",[]],[\"static-attr\",\"class\",\"main\"],[\"flush-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Fates and Furies - Lauren Groff\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"The White Album - Joan Didion\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Go Set a Watchman - Harper Lee\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"The Life Changing Magic of Tidying Up - Marie Kondo\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Authority - Jeff Vandermeer\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Why Not Me? - Mindy Kaling\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Annihilation - Jeff Vandermeer\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"The Power of Habit - Charles Duhigg\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"But What If We’re Wrong? - Chuck Klosterman\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"The Opposite of Loneliness - Marina Keegan\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Adulting - Kelly Williams Brown\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Lord of the Flies - William Golding\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"The Goldfinch - Donna Tartt\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"The Grownup - Gillian Flynn\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"The Bell Jar - Sylvia Plath\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Modern Romance - Aziz Ansari\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"How to be a Woman - Caitlin Moran\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Hunger Makes Me a Modern Girl - Carrie Brownstein\"],[\"close-element\"],[\"text\",\"\\n  \"],[\"close-element\"],[\"text\",\"\\n\\n  \"],[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"text\",\"2015\"],[\"close-element\"],[\"text\",\"\\n\\n  \"],[\"open-element\",\"ul\",[]],[\"static-attr\",\"class\",\"main\"],[\"flush-element\"],[\"text\",\"\\n  \\t\"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Freedom - Jonathan Franzen\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"#GIRLBOSS - Sophia Amoruso\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"This is Where I Leave You - Jonathan Tropper\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"How to Build a Girl - Caitlin Moran\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"The Girl on the Train - Paula Hawkins\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Bad Feminist - Roxane Gay\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Corrections to my Memoirs - Michael Kun\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"A Clash of Kings - George R. R. Martin\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"A Game of Thrones - George R. R. Martin\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"One More Thing - B. J. Novak\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Wild - Cheryl Strayed\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"The Fountainhead - Ayn Rand\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Sharp Objects - Gillian Flynn\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Divergent - Veronica Roth\"],[\"close-element\"],[\"text\",\"\\n  \"],[\"close-element\"],[\"text\",\"\\n\\n  \"],[\"open-element\",\"footer\",[]],[\"flush-element\"],[\"text\",\"© \"],[\"block\",[\"link-to\"],[\"index\"],null,0],[\"close-element\"],[\"text\",\"\\n\"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[{\"statements\":[[\"text\",\"Madeline Rae Horowitz · 2017\"]],\"locals\":[]}],\"hasPartials\":false}", "meta": { "moduleName": "raemadeline/templates/books.hbs" } });
+});
+define("raemadeline/templates/components/fade-in-image", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template({ "id": "nQRaDabL", "block": "{\"statements\":[[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"placeholder\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n\"],[\"yield\",\"default\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[\"default\"],\"blocks\":[],\"hasPartials\":false}", "meta": { "moduleName": "raemadeline/templates/components/fade-in-image.hbs" } });
 });
 define("raemadeline/templates/concerts", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template({ "id": "NAsgXXT0", "block": "{\"statements\":[[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"container\"],[\"flush-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"header\",[]],[\"flush-element\"],[\"text\",\"In reverse chronological order\"],[\"close-element\"],[\"text\",\"\\n\\n  \"],[\"open-element\",\"h1\",[]],[\"flush-element\"],[\"text\",\"2016\"],[\"close-element\"],[\"text\",\"\\n\\n  \"],[\"open-element\",\"ul\",[]],[\"static-attr\",\"class\",\"main\"],[\"flush-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"CHVRCHES\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Tacocat\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Lucius\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Amanda Palmer\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Florence + The Machine with Grimes\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"HAIM\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Mac Miller\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"The Strokes\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Beck\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Father John Misty\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Bob Moses\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Years and Years\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"li\",[]],[\"flush-element\"],[\"text\",\"Best Coast with Wavves\"],[\"close-element\"],[\"text\",\"\\n  \"],[\"close-element\"],[\"text\",\"\\n\\n  \"],[\"open-element\",\"footer\",[]],[\"flush-element\"],[\"text\",\"© \"],[\"block\",[\"link-to\"],[\"index\"],null,0],[\"close-element\"],[\"text\",\"\\n\"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[{\"statements\":[[\"text\",\"Madeline Rae Horowitz · 2017\"]],\"locals\":[]}],\"hasPartials\":false}", "meta": { "moduleName": "raemadeline/templates/concerts.hbs" } });
@@ -289,7 +340,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("raemadeline/app")["default"].create({"name":"raemadeline","version":"0.0.0+f9516d15"});
+  require("raemadeline/app")["default"].create({"name":"raemadeline","version":"0.0.0+ee1329a6"});
 }
 
 /* jshint ignore:end */
