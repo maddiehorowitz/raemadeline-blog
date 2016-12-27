@@ -1,0 +1,73 @@
+[data-predefined-style="true"] main a {
+    border-bottom: 0.1rem solid rgba(255, 255, 255, 0.25);
+	color: rgba(255, 255, 255, 1);
+    padding-bottom: 0.07em;
+    text-decoration: none;
+}
+
+[data-predefined-style="true"] main {
+	font-size: 2rem;
+	font-weight: 400;
+	color: rgba(255, 255, 255, 1);
+	font-family: Karla, Social /*!Google*/;
+	font-style: normal;
+	line-height: 1.4;
+}
+
+[data-predefined-style="true"] main a:hover {
+	border-bottom-color: rgba(255, 255, 255, 1);
+    color: white;
+}
+
+[data-predefined-style="true"] h1 a {
+    color:  rgb(255, 255, 255);
+}
+275
+
+[data-predefined-style="true"] h1 {
+    font-family: 'Playfair Display', Social /*!Google*/;
+    font-style: normal;
+    font-weight: 900;
+    padding: 0;
+    margin: 0;
+    font-size: 6.3rem;
+    line-height: 1.5;
+    color:  rgb(255, 255, 255);
+    text-rendering: optimizeLegibility;
+}
+
+[data-predefined-style="true"] h2 a {
+    border-bottom: 0.07rem solid  rgba(255, 255, 255, 0.5);
+    color:  rgba(255, 255, 255, 1);
+    padding-bottom: 0.2rem;
+}
+291
+
+[data-predefined-style="true"] h2 {
+    font-family: "Playfair Display", Social /*!Google*/;
+    font-style: italic;
+    font-weight: 700;
+    padding: 0;
+    margin: 0;
+    color:  rgba(255, 255, 255, 1);
+    font-size: 4.6rem;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+}
+
+[data-predefined-style="true"] small a {
+    color:  rgba(255, 255, 255, 1);
+    border-bottom-width: 0.07em;
+}
+309
+
+[data-predefined-style="true"] small {
+    color:  rgba(255, 255, 255, 1);
+    font-family: "Space Mono", Social /*!Google*/;
+    font-style: normal;
+    font-weight: 400;
+    display: inline-block;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    letter-spacing: 2px;
+}

@@ -11,7 +11,7 @@ module.exports = function(deployTarget) {
 
   ENV.git = {
     repo: 'git@github.com:raemadeline/raemadeline.git',
-    branch: 'gh-pages'
+    branch: 'master'
   };
 
   if (deployTarget === 'development') {
