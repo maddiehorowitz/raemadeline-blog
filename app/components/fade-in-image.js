@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ENV from '../config/environment';
 
 export default Ember.Component.extend({
   classNames: ['fade-in-image'],
@@ -7,12 +8,20 @@ export default Ember.Component.extend({
   sourceImage: '',
   // animation speed in milliseconds
   animationSpeed: 1000,
-
   imageLoaded: false,
 
   // parse animationSpeed into seconds, then into a string
   animationSeconds: Ember.computed('animationSpeed', function() {
-    return `${this.get('animationSpeed') / 1000}s`;
+    var seconds = this.get('animationSpeed') / 1000;
+    return `${seconds}s`;
+  }),
+
+  imagePath: Ember.computed('sourceImage', function() {
+    if(ENV.environment == "production") {
+      return `${ENV.rootURL}${this.get('sourceImage')}`;
+    }
+
+    return this.get('sourceImage');
   }),
 
   didInsertElement() {
@@ -29,12 +38,13 @@ export default Ember.Component.extend({
 
     img.onload = () => {
       this.set('imageLoaded', true);
-      this.$().css('background-image', `url(${this.get('sourceImage')})`);
+      this.$().css('background-image', `url(${this.get('imagePath')})`);
+
       Ember.run.later(this, function() {
         this.$('.placeholder').remove();
       }, this.get('animationSpeed'));
     };
 
-    img.src = this.get('sourceImage');
+    img.src = this.get('imagePath');
   }
 });
