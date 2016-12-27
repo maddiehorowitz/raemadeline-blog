@@ -17,7 +17,7 @@ export default Ember.Component.extend({
   }),
 
   imagePath: Ember.computed('sourceImage', function() {
-    if(ENV.environment == "production") {
+    if(ENV.environment === "production") {
       return `${ENV.rootURL}${this.get('sourceImage')}`;
     }
 
