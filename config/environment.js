@@ -43,7 +43,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.rootURL = '/raemadeline/'
+    // ENV.rootURL = '/raemadeline/'
   }
 
   return ENV;
